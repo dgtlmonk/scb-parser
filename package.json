@@ -1,0 +1,18 @@
+{
+  "name": "jade_sample",
+  "version": "0.0.0",
+  "description": "express jade template sample",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cheerio": "^0.15.0",
+    "connect-assets": "^3.0.0-beta2",
+    "express": "^4.1.1",
+    "jade": "^1.3.1",
+    "request": "^2.34.0"
+  }
+}
