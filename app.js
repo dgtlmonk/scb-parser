@@ -16,12 +16,23 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 // var router = express.Router();
+//
+ var scb_url = "https://smart-creative-brief.googleplex.com/creative/53/";
+ var options = {
+        url: scb_url,
+        headers: {
+            'Access-Control-Allow-Origin':'http://smart-creative-brief.googleplex.com/',
+            'Access-Control-Allow-Methods':'GET,POST,OPTIONS',
+            'Access-Control-Allow-Headers':'Origin, X-Request-With, Content-Type, Accept',
+            'Access-Control-Allow-Credentials':true
+        }
+};
+
 
 app.get('/', routes.index);
 
 app.get('/scrape', function(){
  //   var scb_url = 'https://news.ycombinator.com'; //
-    var scb_url = "https://smart-creative-brief.googleplex.com/creative/53/";
     console.log(' Scraping ' + scb_url + ' ....');
 
     // parse HTML handler
@@ -44,10 +55,14 @@ app.get('/scrape', function(){
         }
 
         console.log( "Response ---- \n" + response);
+        for (var i in response) {
+            console.log( i + ":" + response[i]);
+        }
     }
 
+
     // 1. load scb_url via request
-    request(scb_url, parseHTML);
+    request(options, parseHTML);
 });
 
 app.listen(port);
